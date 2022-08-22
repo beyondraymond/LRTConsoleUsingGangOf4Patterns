@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LRTConsoleUsingGangOf4Patterns
 {
-    public class Train
+    public class TrainBuilder
     {
         //required parameters
         private int numberOfTrainCoach;
@@ -17,21 +17,24 @@ namespace LRTConsoleUsingGangOf4Patterns
         private Boolean isAirconEnabled;
         private Boolean isAdCustomizable;
 
+        public TrainBuilder(int numberOfTrainCoach, int engineID, string railwayType)
+        {
+            this.numberOfTrainCoach = numberOfTrainCoach;
+            this.engineID = engineID;
+            this.railwayType = railwayType;
+        }
+
+        public TrainBuilder setAirconEnabled(Boolean isAirconEnabled) { this.isAirconEnabled = isAirconEnabled; return this; }
+
+        public TrainBuilder setAdCustomizable(Boolean isAdCustomizable) { this.isAdCustomizable = isAdCustomizable; return this; }
+
         public int getNumberOfTrainCoach() { return numberOfTrainCoach; }
         public int getEngineID() { return engineID; }
         public String getRailwayType() { return railwayType; }
 
         public bool getAirconType() { return isAirconEnabled; }
-        public bool getAdCustomizable() { return isAdCustomizable; }    
+        public bool getAdCustomizable() { return isAdCustomizable; }
 
-        public Train(TrainBuilder builder)
-        {
-            this.numberOfTrainCoach = builder.getNumberOfTrainCoach();
-            this.engineID = builder.getEngineID();
-            this.railwayType = builder.getRailwayType();
-            this.isAirconEnabled = builder.getAirconType();
-            this.isAdCustomizable = builder.getAdCustomizable();
-        }
-
+        public Train build() { return new Train(this); }
     }
 }

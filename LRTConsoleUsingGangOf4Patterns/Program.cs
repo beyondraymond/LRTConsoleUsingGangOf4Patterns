@@ -247,7 +247,7 @@ while (!endApp)
 
                     }
 
-                    Train train = new Train.TrainBuilder(numTrainCoach, engineID, railwayDict[railwayChoice])
+                    Train train = new TrainBuilder(numTrainCoach, engineID, railwayDict[railwayChoice])
                         .setAirconEnabled(airconChecker)
                         .setAdCustomizable(adChecker)
                         .build();
@@ -258,8 +258,8 @@ while (!endApp)
                     Console.WriteLine("Train Engine ID  : " + train.getEngineID());
                     Console.WriteLine("Railway Type     : " + train.getRailwayType());
                     Console.WriteLine("Number of Coach  : " + train.getNumberOfTrainCoach());
-                    Console.WriteLine("Aircon Enabled?  : " + train.isAirconEnabled);
-                    Console.WriteLine("Customizable Ads : " + train.isAdCustomizable);
+                    Console.WriteLine("Aircon Enabled?  : " + train.getAirconType());
+                    Console.WriteLine("Customizable Ads : " + train.getAdCustomizable());
                     break;
 
                 default:
